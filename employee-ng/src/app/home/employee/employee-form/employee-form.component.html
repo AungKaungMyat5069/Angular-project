@@ -1,0 +1,82 @@
+<section class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <h3 class="card-header">Employee Form</h3>
+                <div class="card-body">
+
+                    <form #empForm="ngForm">
+                        <div class="my-2 mx-4">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" #firstName="ngModel"
+                            name="firstName" minlength="3" maxlength="20" class="form-control {{firstName.touched && firstName.invalid ? 'is-invalid' : ''}}" 
+                            [ngModel]="employee.firstName" required/>
+                            @if (firstName.errors?.['required']) {
+                                <small class="invalid-feedback ">First Name is Required</small>
+                            } @else if (firstName.errors?.['minlength']) {
+                                <small class="invalid-feedback ">First Name Minimum length is 3 characters</small>
+                            }
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" #lastName="ngModel"
+                            name="lastName" minlength="3" maxlength="20"
+                            class="form-control {{lastName.touched && lastName.invalid ? 'is-invalid' : ''}}" 
+                            [ngModel]="employee.lastName" required/>
+                            @if (lastName.errors?.['required']) {
+                                <small class="invalid-feedback ">Last Name is Required</small>
+                            } @else if (lastName.errors?.['minlength']) {
+                                <small class="invalid-feedback ">Last Name Minimum length is 3 characters</small>
+                            }
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label for="email" class="form-label"> Email</label>
+                            <input type="email" #email="ngModel"
+                             name="email" class="form-control {{email.touched && email.invalid ? 'is-invalid' : ''}}" 
+                             [ngModel]="employee.email" required/>
+                             @if (email.errors?.['required']) {
+                                <small class="invalid-feedback ">Email is Required</small>
+                            } @else if (email.errors?.['minlength']) {
+                                <small class="invalid-feedback ">Email Minimum length is 3 characters</small>
+                            }
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="text" #phoneNumber="ngModel" 
+                            name="phoneNumber" class="form-control {{phoneNumber.touched && phoneNumber.invalid ? 'is-invalid' : ''}}" 
+                            [ngModel]="employee.phoneNumber" required/>
+                            @if (phoneNumber.errors?.['required']) {
+                                <small class="invalid-feedback ">PhoneNumber is Required</small>
+                            } @else if (phoneNumber.errors?.['minlength']) {
+                                <small class="invalid-feedback ">PhoneNumber Minimum length is 3 characters</small>
+                            }
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label for="hireDate" class="form-label">Hire Date</label>
+                            <input type="date" #hireDate="ngModel"
+                            name="hireDate" class="form-control {{hireDate.touched && hireDate.invalid ? 'is-invalid' : ''}}" 
+                            [ngModel]="employee.hireDate" required/>
+                            @if (hireDate.errors?.['required']) {
+                                <small class="invalid-feedback ">Hire Date is Required</small>
+                            } @else if (hireDate.errors?.['minlength']) {
+                                <small class="invalid-feedback ">Hire Date Minimum length is 3 characters</small>
+                            }
+                        </div>
+                        <div class="my-2 mx-4">
+                            <label for="salary" class="form-label">Salary</label>
+                            <input type="number" #salary="ngModel"
+                            name="salary" class="form-control {{salary.invalid ? 'is-invalid' : ''}}" 
+                            [ngModel]="employee.salary" required/>
+                            @if (salary.value <= 0 && salary.value >= 1000 ) {
+                                
+                                <small class="invalid-feedback ">Salary must be highter than 0  and lower than 1001 </small>
+                            } 
+                        </div>
+                        <button (click)="createEmployee(empForm.value)" [disabled]="empForm.invalid" class="btn btn-primary btn-of-save-employee my-2 py-2 px-5 {{empForm.invalid ? 'btn-secondary': ''}}">Save Employee</button>
+                    </form>
+                </div>
+                {{empForm.value | json}}
+            </div>
+        </div>
+    </div>
+</section>

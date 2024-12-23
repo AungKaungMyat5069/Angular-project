@@ -1,0 +1,41 @@
+
+<section class="container mt-5">
+    <button class="btn btn-primary rounded-4 p-2 px-3 mb-3" routerLink="employee-form">New Employee</button>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <h4 class="card-header">Employee Table</h4>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Hired Date</th>
+                            <th>Salary</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (emp of ($employees | async); track emp.id) {
+                            <tr>
+                                <td>{{emp.id}}</td>
+                                <td>{{emp.firstName}}</td>
+                                <td>{{emp.lastName}}</td>
+                                <td>{{emp.email}}</td>
+                                <td>{{emp.phoneNumber}}</td>
+                                <td>{{emp.hireDate}}</td>
+                                <td>{{emp.salary}}</td>
+                                <td>
+                                    <button (click)="findEmployee(emp.id)" class="btn btn-outline-info px-2">Update</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
