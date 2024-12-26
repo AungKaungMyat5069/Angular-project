@@ -1,5 +1,6 @@
 # angular step
 ## my-test
-## angular-binding
+## angular-data-binding
 ## ng-life-cycle-hook
 ## ng-bookstore
+## employee-ng

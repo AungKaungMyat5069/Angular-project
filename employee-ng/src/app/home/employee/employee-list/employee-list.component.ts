@@ -20,4 +20,14 @@ export class EmployeeListComponent {
   findEmployee(id:number) {
     this.router.navigate([`/employees/employee-form`, id] )
   }
+
+  deleteEmployee(id:number) {
+    this.employeeService.deleteEmployee(id)
+    .subscribe(
+      {
+        complete: () => this.$employees = this.employeeService.getAllEmployee()
+        // up to date info but not to refresh the page
+      }
+    );
+  }
 }

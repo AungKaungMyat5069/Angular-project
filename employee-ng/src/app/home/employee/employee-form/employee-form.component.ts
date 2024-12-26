@@ -25,13 +25,13 @@ export class EmployeeFormComponent implements OnInit{
     hireDate: new Date(),
     salary: 0
   }
+  id!:number;
 
   ngOnInit(): void {
-    let id = 0;
     this.route.params.subscribe(params => {
-      id = params['id'];
-      if(id) {
-        this.employeeService.getEmployeeById(id)
+      this.id = params['id'];
+      if(this.id) {
+        this.employeeService.getEmployeeById(this.id)
         .subscribe(
           {
             next: data => this.employee = data,
@@ -45,15 +45,28 @@ export class EmployeeFormComponent implements OnInit{
   }
 
   createEmployee(emp:Employee) {
-    this.employeeService.saveEmployee(emp)
-    .subscribe(
-      {
-        next: data => console.log(data),
-        error: e => console.log(e),
-        complete: () => {
-          this.router.navigate(['/employees'])
+    if(this.id) {
+      this.employeeService.updateEmployee(emp, this.id)
+      .subscribe(
+        {
+          next: data => console.log(emp, this.id),
+          error: e => console.log(e),
+          complete: () => {
+            this.router.navigate(['/employees'])
+          }          
         }
-      }
-    )
+      )
+    } else {
+      this.employeeService.saveEmployee(emp)
+      .subscribe(
+        {
+          next: data => console.log(data),
+          error: e => console.log(e),
+          complete: () => {
+            this.router.navigate(['/employees'])
+          }
+        }
+      )
+    }
   }
 }

@@ -25,4 +25,16 @@ export class EmployeeService {
   getEmployeeById(id:number):Observable<Employee> {
     return this.http.get<Employee>(`${this.EMPLOYEE_API_BACKEND_URL}/${id}`)
   }
+
+  updateEmployee(emp:Partial<Employee>, id:number):Observable<Employee> {
+    const header = new HttpHeaders();
+    header.set("Content-Type", "application/json")
+    return this.http.put<Employee>(`${this.EMPLOYEE_API_BACKEND_URL}/ ${id}`, emp, {headers : header} )
+  }
+
+  deleteEmployee(id:number):Observable<any> {
+    
+    return this.http.delete<Employee>(`${this.EMPLOYEE_API_BACKEND_URL}?id=${id}`);
+    
+  }
 }

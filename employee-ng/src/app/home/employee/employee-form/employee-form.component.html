@@ -72,7 +72,7 @@
                                 <small class="invalid-feedback ">Salary must be highter than 0  and lower than 1001 </small>
                             } 
                         </div>
-                        <button (click)="createEmployee(empForm.value)" [disabled]="empForm.invalid" class="btn btn-primary btn-of-save-employee my-2 py-2 px-5 {{empForm.invalid ? 'btn-secondary': ''}}">Save Employee</button>
+                        <button (click)="createEmployee(empForm.value)" [disabled]="empForm.invalid" class="btn btn-primary btn-of-save-employee my-2 py-2 px-5 {{empForm.invalid ? 'btn-secondary': ''}}">{{id ? 'Update Employee' : 'Save Employee'}}</button>
                     </form>
                 </div>
                 {{empForm.value | json}}
