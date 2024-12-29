@@ -1,0 +1,16 @@
+    <!-- Original Style -->
+    <!-- <div class="card mb-3">
+        <img height="220" src="{{'assets/recipes/' + recipe.imageUrl}}" alt={{recipe.title}} class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{recipe.title}}</h5>
+            <p class="card-text"> {{recipe.servings}} &nbsp; persons.</p>
+        </div>
+    </div> -->
+    <!-- Signal Style -->
+    <div class="card mb-3">
+        <img height="220" src="{{'assets/recipes/' + recipe().imageUrl}}" alt={{recipe().title}} class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{recipe().title}}</h5>
+            <p class="card-text"> {{recipe().servings}} &nbsp; persons.</p>
+        </div>
+    </div>

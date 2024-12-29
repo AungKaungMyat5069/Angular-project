@@ -4,3 +4,5 @@
 ## ng-life-cycle-hook
 ## ng-bookstore
 ## employee-ng
+## recipes-app
+## shopping-store
