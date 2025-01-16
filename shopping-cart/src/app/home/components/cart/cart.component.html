@@ -1,0 +1,22 @@
+<section class="wrapper">
+    <div class="header">
+        <strong>Cart</strong> {{ count() === 1 ? count() + ' item' : count() + ' items' }}
+    </div>
+    @if (count()) {
+        <main class="main">
+            <section class="item shadow">
+                <div class="title">
+                    <strong>Cart</strong> {{ count() === 1 ? count() + ' item' : count() + ' items' }}
+                </div>
+                <div class="arrival">
+                    <strong>Arrived by Web,Aug 27 </strong>
+                </div>
+                <div class="content">
+                    @for (item of items(); track item.id) {
+                        <app-cart-item-card [cart_item]="item"></app-cart-item-card>
+                    }
+                </div>
+            </section>
+        </main>
+    }
+</section>
